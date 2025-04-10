@@ -33,7 +33,7 @@ plt.title("滤波前原图")
 
 fft_Img = np.fft.fft2(Img)
 fft_Img = np.fft.fftshift(fft_Img)  # 中心化，中心高频 
-# plt.imshow(np.log(1+abs(fft_Img)**2),'gray',origin='lower')
+# plt.imshow(np.log(1+abs(fft_Img)**2),'gray')
 # plt.title("滤波前频谱图")
 
 # high_pass Filtering
@@ -41,13 +41,13 @@ fft_Img = np.fft.fftshift(fft_Img)  # 中心化，中心高频
 r = 100
 FILT_Img = fft_Img * (1-CirFltr(m,n,r))
 plt.subplot(132)
-plt.imshow(np.log(1+abs(FILT_Img)**2),'gray',origin='lower')  # 光学平方，log提升对比度高的低些，小的高些
+plt.imshow(np.log(1+abs(FILT_Img)**2),'gray')  # 光学平方，log提升对比度高的低些，小的高些
 plt.title("滤波后的频谱图")
 
 # 成像，逆变换
 Inver_Img = np.fft.ifft2(FILT_Img)
 plt.subplot(133)
-plt.imshow(abs(Inver_Img)**2,'gray',origin='lower')
+plt.imshow(abs(Inver_Img)**2,'gray')
 plt.title("滤波后的实际图_边缘提取")
 
 plt.show()
